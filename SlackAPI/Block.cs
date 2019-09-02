@@ -210,7 +210,10 @@
         public const string DatePicker = "datepicker";
     }
 
-    public interface IElement { }
+    public interface IElement
+    {
+        string type { get; }
+    }
 
     public interface IBlock { }
 
