@@ -31,4 +31,8 @@
     <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
+    <OutputPath></OutputPath>
+  </PropertyGroup>
+
 </Project>

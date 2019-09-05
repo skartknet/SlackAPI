@@ -4,25 +4,28 @@ using SlackAPI;
 
 namespace SlackAPI.Interactive
 {
-    public interface IAction
+    public interface IInteractiveElement
     {
 
         string action_id { get; set; }
 
         string BlockId { get; set; }
 
+        string Value { get; set; }
+
     }
 
 
-    public class ButtonElementInteractive : ButtonElement, IAction
+    public class ButtonElementInteractive : ButtonElement, IInteractiveElement
     {
-
-
         [JsonProperty("block_id")]
         public string BlockId { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
     }
 
-    public class DatePickerElementInteractive : DatePickerElement, IAction
+    public class DatePickerElementInteractive : DatePickerElement, IInteractiveElement
     {
 
 
@@ -30,11 +33,11 @@ namespace SlackAPI.Interactive
         public string BlockId { get; set; }
 
         [JsonProperty("selected_date")]
-        public DateTime SelectedDate { get; set; }
+        public string Value { get; set; }
     }
 
 
-    public class StaticSelectElementInteractive : StaticSelectElement, IAction
+    public class StaticSelectElementInteractive : StaticSelectElement, IInteractiveElement
     {
 
 
@@ -43,8 +46,18 @@ namespace SlackAPI.Interactive
 
         [JsonProperty("selected_option")]
         public Option SelectedOption { get; set; }
+
+        public string Value
+        {
+            get
+            {
+                return SelectedOption.value;
+            }
+            set { }
+        }
+
     }
-    public class ExternalSelectElementInteractive : ExternalSelectElement, IAction
+    public class ExternalSelectElementInteractive : ExternalSelectElement, IInteractiveElement
     {
 
 
@@ -52,10 +65,19 @@ namespace SlackAPI.Interactive
         public string BlockId { get; set; }
         [JsonProperty("selected_option")]
         public Option SelectedOption { get; set; }
+
+        public string Value
+        {
+            get
+            {
+                return SelectedOption.value;
+            }
+            set { }
+        }
     }
 
 
-    public class UserSelectElementInteractive : UserSelectElement, IAction
+    public class UserSelectElementInteractive : UserSelectElement, IInteractiveElement
     {
 
 
@@ -63,9 +85,9 @@ namespace SlackAPI.Interactive
         public string BlockId { get; set; }
 
         [JsonProperty("selected_user")]
-        public string SelectedUser { get; set; }
+        public string Value { get; set; }
     }
-    public class ConversationSelectElementInteractive : ConversationSelectElement, IAction
+    public class ConversationSelectElementInteractive : ConversationSelectElement, IInteractiveElement
     {
 
 
@@ -73,9 +95,9 @@ namespace SlackAPI.Interactive
         public string BlockId { get; set; }
 
         [JsonProperty("selected_conversation")]
-        public string SelectedConversation { get; set; }
+        public string Value { get; set; }
     }
-    public class ChannelSelectElementInteractive : ChannelSelectElement, IAction
+    public class ChannelSelectElementInteractive : ChannelSelectElement, IInteractiveElement
     {
 
 
@@ -83,13 +105,23 @@ namespace SlackAPI.Interactive
         public string BlockId { get; set; }
 
         [JsonProperty("selected_channel")]
-        public string SelectedChannel { get; set; }
+        public string Value { get; set; }
     }
-    public class OverflowElementInteractive : OverflowElement, IAction
+    public class OverflowElementInteractive : OverflowElement, IInteractiveElement
     {
-
-
         [JsonProperty("block_id")]
         public string BlockId { get; set; }
+
+        [JsonProperty("selected_option")]
+        public Option SelectedOption { get; set; }
+
+        public string Value
+        {
+            get
+            {
+                return SelectedOption.value;
+            }
+            set { }
+        }
     }
 }
