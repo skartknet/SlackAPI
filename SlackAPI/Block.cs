@@ -215,6 +215,9 @@
         string type { get; }
     }
 
-    public interface IBlock { }
+    public interface IBlock {
+        string type { get; }
+        string block_id { get; set; }
+    }
 
 }
