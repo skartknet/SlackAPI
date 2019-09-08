@@ -1,13 +1,21 @@
-﻿using Newtonsoft.Json;
+﻿using JsonSubTypes;
+using Newtonsoft.Json;
 using SlackAPI.Composition;
 
 namespace SlackAPI.Interactive
 {
+
+    [JsonConverter(typeof(JsonSubtypes), "Type")]
+    [JsonSubtypes.KnownSubType(typeof(ButtonElementInteractive), ElementTypes.Button)]
+    [JsonSubtypes.KnownSubType(typeof(StaticSelectElementInteractive), ElementTypes.StaticSelect)]
+    [JsonSubtypes.KnownSubType(typeof(ExternalSelectElementInteractive), ElementTypes.ExternalSelect)]
+    [JsonSubtypes.KnownSubType(typeof(UserSelectElementInteractive), ElementTypes.UserSelect)]
+    [JsonSubtypes.KnownSubType(typeof(ConversationSelectElementInteractive), ElementTypes.ConversationSelect)]
+    [JsonSubtypes.KnownSubType(typeof(OverflowElementInteractive), ElementTypes.Overflow)]
+    [JsonSubtypes.KnownSubType(typeof(DatePickerElementInteractive), ElementTypes.DatePicker)]
     public interface IInteractiveElement
     {
-
         string ActionId { get; set; }
-
         string BlockId { get; set; }
 
         string Value { get; set; }
@@ -25,7 +33,6 @@ namespace SlackAPI.Interactive
     public class DatePickerElementInteractive : DatePickerElement, IInteractiveElement
     {
 
-
         [JsonProperty("block_id")]
         public string BlockId { get; set; }
 
@@ -36,7 +43,6 @@ namespace SlackAPI.Interactive
 
     public class StaticSelectElementInteractive : StaticSelectElement, IInteractiveElement
     {
-
 
         [JsonProperty("block_id")]
         public string BlockId { get; set; }

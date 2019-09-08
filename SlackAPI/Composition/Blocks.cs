@@ -7,17 +7,24 @@ namespace SlackAPI.Composition
     //see https://api.slack.com/reference/messaging/blocks
     public class SectionBlock : IBlock
     {
+        [JsonProperty("type")]
         public string Type { get; } = BlockTypes.Section;
 
         [JsonProperty("block_id")]
         public string BlockId { get; set; }
 
+        [JsonProperty("text")]
         public TextObject Text { get; set; }
+
+        [JsonProperty("accessory")]
         public IElement Accessory { get; set; }
+
+        [JsonProperty("fields")]
         public TextObject[] Fields { get; set; }
     }
     public class DividerBlock : IBlock
     {
+        [JsonProperty("type")]
         public string Type { get; } = BlockTypes.Divider;
 
         [JsonProperty("block_id")]
@@ -26,10 +33,13 @@ namespace SlackAPI.Composition
     }
     public class ImageBlock : IBlock
     {
+        [JsonProperty("type")]
         public string Type { get; } = BlockTypes.Image;
 
         [JsonProperty("block_id")]
         public string BlockId { get; set; }
+
+        [JsonProperty("title")]
         public TextObject Title { get; set; }
 
         [JsonProperty("image_url")]
@@ -40,10 +50,13 @@ namespace SlackAPI.Composition
     }
     public class ActionsBlock : IBlock
     {
+        [JsonProperty("type")]
         public string Type { get; } = BlockTypes.Actions;
 
         [JsonProperty("block_id")]
         public string BlockId { get; set; }
+
+        [JsonProperty("elements")]
         public IElement[] Elements { get; set; }
     }
 
@@ -64,10 +77,13 @@ namespace SlackAPI.Composition
 
     public class ContextBlock : IBlock
     {
+        [JsonProperty("type")]
         public string Type { get; } = BlockTypes.Context;
 
         [JsonProperty("block_id")]
         public string BlockId { get; set; }
+
+        [JsonProperty("elements")]
         public IElement[] Elements { get; set; }
     }
 

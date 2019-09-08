@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,9 @@ namespace SlackAPI
         /// if ok is false, then this is the reason-code
         /// </summary>
         public string error;
+
+        [JsonProperty("warning")]
+        public string Warning;
 
         public void AssertOk()
         {

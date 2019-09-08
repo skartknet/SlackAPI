@@ -10,6 +10,7 @@ namespace SlackAPI.Composition
 
     public class ImageElement : IElement
     {
+        [JsonProperty("type")]
         public string Type { get; } = ElementTypes.Image;
 
         [JsonProperty("image_url")]
@@ -20,24 +21,39 @@ namespace SlackAPI.Composition
     }
     public class ButtonElement : IElement
     {
+        [JsonProperty("type")]
         public string Type { get; } = ElementTypes.Button;
+
+        [JsonProperty("text")]
         public TextObject Text { get; set; }
 
         [JsonProperty("action_id")]
         public string ActionId { get; set; }
+
+        [JsonProperty("url")]
         public string Url { get; set; }
+
+        [JsonProperty("value")]
         public string Value { get; set; }
-        public string Style { get; set; } 
+
+        [JsonProperty("style")]
+        public string Style { get; set; }
+
+        [JsonProperty("confirm")]
         public ConfirmObject Confirm { get; set; }
     }
     public class StaticSelectElement : IElement
     {
+        [JsonProperty("type")]
         public string Type { get; } = ElementTypes.StaticSelect;
 
         [JsonProperty("action_id")]
         public string ActionId { get; set; }
 
+        [JsonProperty("placeholder")]
         public TextObject Placeholder { get; set; }
+
+        [JsonProperty("options")]
         public OptionObject[] Options { get; set; }
 
         [JsonProperty("option_groups")]
@@ -46,15 +62,18 @@ namespace SlackAPI.Composition
         [JsonProperty("initial_option")]
         public string InitialOption { get; set; }
 
+        [JsonProperty("confirm")]
         public ConfirmObject Confirm { get; set; }
     }
     public class ExternalSelectElement : IElement
     {
+        [JsonProperty("type")]
         public string Type { get; } = ElementTypes.ExternalSelect;
 
         [JsonProperty("action_id")]
         public string ActionId { get; set; }
 
+        [JsonProperty("placeholder")]
         public TextObject Placeholder { get; set; }
 
         [JsonProperty("initial_option")]
@@ -63,63 +82,92 @@ namespace SlackAPI.Composition
         [JsonProperty("min_query_length")]
         public int MinQueryLength { get; set; }
 
-
+        [JsonProperty("confirm")]
         public ConfirmObject Confirm { get; set; }
     }
 
 
     public class UserSelectElement : IElement
     {
+        [JsonProperty("type")]
         public string Type { get; } = ElementTypes.UserSelect;
 
         [JsonProperty("action_id")]
         public string ActionId { get; set; }
+
+        [JsonProperty("placeholder")]
         public TextObject Placeholder { get; set; }
 
         [JsonProperty("initial_user")]
         public string InitialUser { get; set; }
+
+        [JsonProperty("confirm")]
         public ConfirmObject Confirm { get; set; }
     }
     public class ConversationSelectElement : IElement
     {
+        [JsonProperty("type")]
         public string Type { get; } = ElementTypes.ChannelSelect;
 
         [JsonProperty("action_id")]
         public string ActionId { get; set; }
+
+        [JsonProperty("placeholder")]
         public TextObject Placeholder { get; set; }
 
         [JsonProperty("initial_conversation")]
         public string InitialConversation { get; set; }
+
+        [JsonProperty("confirm")]
         public ConfirmObject Confirm { get; set; }
     }
     public class ChannelSelectElement : IElement
     {
+        [JsonProperty("type")]
         public string Type { get; } = ElementTypes.ChannelSelect;
+
         [JsonProperty("action_id")]
         public string ActionId { get; set; }
+
+        [JsonProperty("placeholder")]
         public TextObject placeholder { get; set; }
+
         [JsonProperty("initial_channel")]
         public string InitialChannel { get; set; }
+
+        [JsonProperty("confirm")]
         public ConfirmObject Confirm { get; set; }
     }
     public class OverflowElement : IElement
     {
+        [JsonProperty("type")]
         public string Type { get; } = ElementTypes.Overflow;
+
         [JsonProperty("action_id")]
         public string ActionId { get; set; }
+
+        [JsonProperty("options")]
         public OptionObject[] Options { get; set; }
+
+        [JsonProperty("confirm")]
         public ConfirmObject Confirm { get; set; }
     }
 
     public class DatePickerElement : IElement
     {
+        [JsonProperty("type")]
         public string Type { get; } = ElementTypes.DatePicker;
 
         [JsonProperty("action_id")]
         public string ActionId { get; set; }
+
+        [JsonProperty("placeholder")]
         public TextObject Placeholder { get; set; }
+
         [JsonProperty("initial_date")]
         public string InitialDate { get; set; }
+
+        [JsonProperty("confirm")]
         public ConfirmObject Confirm { get; set; }
     }
 
@@ -145,19 +193,28 @@ namespace SlackAPI.Composition
 
     public abstract class TextObject : IElement
     {
+        [JsonProperty("type")]
         public virtual string Type { get; set; }
+
+        [JsonProperty("text")]
         public string Text { get; set; }
+
+        [JsonProperty("emoji")]
         public bool? Emoji { get; set; }
+
+        [JsonProperty("verbatim")]
         public bool? Verbatim { get; set; }
     }
 
     public class PlainTextObject : TextObject
     {
+        [JsonProperty("type")]
         public override string Type { get; set; } = TextTypes.PlainText;
     }
 
     public class MarkdownTextObject : TextObject
     {
+        [JsonProperty("type")]
         public override string Type { get; set; } = TextTypes.Markdown;
     }
 
