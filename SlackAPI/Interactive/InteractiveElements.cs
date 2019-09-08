@@ -1,13 +1,12 @@
-﻿using System;
-using Newtonsoft.Json;
-using SlackAPI;
+﻿using Newtonsoft.Json;
+using SlackAPI.Composition;
 
 namespace SlackAPI.Interactive
 {
     public interface IInteractiveElement
     {
 
-        string action_id { get; set; }
+        string ActionId { get; set; }
 
         string BlockId { get; set; }
 
@@ -21,8 +20,6 @@ namespace SlackAPI.Interactive
         [JsonProperty("block_id")]
         public string BlockId { get; set; }
 
-        [JsonProperty("value")]
-        public string Value { get; set; }
     }
 
     public class DatePickerElementInteractive : DatePickerElement, IInteractiveElement
@@ -45,13 +42,13 @@ namespace SlackAPI.Interactive
         public string BlockId { get; set; }
 
         [JsonProperty("selected_option")]
-        public Option SelectedOption { get; set; }
+        public OptionObject SelectedOption { get; set; }
 
         public string Value
         {
             get
             {
-                return SelectedOption.value;
+                return SelectedOption.Value;
             }
             set { }
         }
@@ -64,13 +61,13 @@ namespace SlackAPI.Interactive
         [JsonProperty("block_id")]
         public string BlockId { get; set; }
         [JsonProperty("selected_option")]
-        public Option SelectedOption { get; set; }
+        public OptionObject SelectedOption { get; set; }
 
         public string Value
         {
             get
             {
-                return SelectedOption.value;
+                return SelectedOption.Value;
             }
             set { }
         }
@@ -113,13 +110,13 @@ namespace SlackAPI.Interactive
         public string BlockId { get; set; }
 
         [JsonProperty("selected_option")]
-        public Option SelectedOption { get; set; }
+        public OptionObject SelectedOption { get; set; }
 
         public string Value
         {
             get
             {
-                return SelectedOption.value;
+                return SelectedOption.Value;
             }
             set { }
         }

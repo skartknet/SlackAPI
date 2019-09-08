@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SlackAPI.Composition;
 using SlackAPI.Interactive;
 using SlackAPI.RPCMessages;
 using System;

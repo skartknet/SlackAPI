@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using SlackAPI.RPCMessages;
+using SlackAPI.Composition;
 
 namespace SlackAPI
 {
@@ -590,7 +591,7 @@ namespace SlackAPI
             string targetuser,
             string parse = null,
             bool linkNames = false,
-            Block[] blocks = null,
+            IBlock[] blocks = null,
             Attachment[] attachments = null,
             bool as_user = false,
 	    string thread_ts = null)

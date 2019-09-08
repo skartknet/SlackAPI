@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SlackAPI.Composition;
+using System;
 using System.Collections.Generic;
 
 namespace SlackAPI.WebSocketMessages
@@ -16,7 +17,7 @@ namespace SlackAPI.WebSocketMessages
         public string username;
         public string bot_id;
         public UserProfile icons;
-        public List<Block> blocks;
+        public List<IBlock> blocks;
         public List<Attachment> attachments;
 
         public NewMessage()
